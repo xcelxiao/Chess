@@ -1,0 +1,42 @@
+palettes:
+  - name: palette
+    max-entries: 32 # tried making this 16 to enable 4bpp; will look into later
+    fixed-entries:
+      - color: { index: 0, hex: "#808080" } # grey transparent bg
+      - color: { index: 1, hex: "#B88762" } # dark brown chess square
+      - color: { index: 2, hex: "#EDD6B0" } # light brown chess square
+    images: automatic
+
+converts:
+  - name: sprites
+    palette: palette
+    transparent-color-index: 0
+    style: rlet
+    compress: zx0
+    images:
+    # White pieces
+      - img/white_king.png
+      - img/white_pawn.png
+      - img/white_knight.png
+      - img/white_bishop.png
+      - img/white_rook.png
+      - img/white_queen.png
+    # Black pieces
+      - img/black_king.png
+      - img/black_pawn.png
+      - img/black_knight.png
+      - img/black_bishop.png
+      - img/black_rook.png
+      - img/black_queen.png
+
+outputs:
+  - type: appvar
+    name: gfx
+    include-file: gfx.h
+    source-format: c
+    palettes:
+      - palette
+    converts:
+      - sprites
+
+
